@@ -41,3 +41,10 @@ User.delete(user3.id)
 print(f"User with ID {user3.id} deleted")
 
 
+# Create categories
+categories = [
+    Category.create(name="Entertainment"),
+    Category.create(name="Utilities"),
+    Category.create(name="Transportation"),
+    Category.create(name="Clothing")
+]
