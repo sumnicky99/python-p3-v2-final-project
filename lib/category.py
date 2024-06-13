@@ -43,4 +43,12 @@ class Category:
         cursor.execute(sql)
         conn.commit()
         conn.close()
-
+#dropped the created table
+    @classmethod
+    def drop_table(cls):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        sql = 'DROP TABLE IF EXISTS categories'
+        cursor.execute(sql)
+        conn.commit()
+        conn.close()
