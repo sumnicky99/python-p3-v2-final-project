@@ -102,3 +102,12 @@ if fetched_user:
     fetched_user.email = "maya@example.com"
     fetched_user.save()
     print(f"User updated: {fetched_user.username}, {fetched_user.email}, {fetched_user.id}")
+
+# Verify data in tables
+def fetch_all_users():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM users')
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
