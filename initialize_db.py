@@ -119,3 +119,11 @@ def fetch_all_categories():
     rows = cursor.fetchall()
     conn.close()
     return rows
+
+def fetch_all_expenses():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM expenses')
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
