@@ -51,3 +51,24 @@ def date(self):
 @date.setter
 def date(self, value):
     self._date = value
+
+#class methods
+#creating a table
+@classmethod
+def create_table(cls):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    sql = '''
+        CREATE TABLE IF NOT EXISTS expenses (
+            id INTEGER PRIMARY KEY,
+            user_id INTEGER,
+            category_id INTEGER,
+            amount REAL,
+            description TEXT,
+            date TEXT,
+            FOREIGN KEY(user_id) REFERENCES users(id),
+            FOREIGN KEY(category_id) REFERENCES categories(id)
+        )
+    '''
+    cursor.execute(sql)
+    conn.commit()
