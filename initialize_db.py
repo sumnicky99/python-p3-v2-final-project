@@ -48,3 +48,15 @@ categories = [
     Category.create(name="Transportation"),
     Category.create(name="Clothing")
 ]
+
+for category in categories:
+    print(f"Category created: {category.name}, {category.id}")
+
+# Update a category (watch how it updates utilities to household)
+print("Updating category...")
+category_to_update = Category.find_category_by_id(categories[1].id)
+if category_to_update:
+    category_to_update.name = "Household"
+    category_to_update.save()
+    print(f"Category updated: {category_to_update.name}, {category_to_update.id}")
+
