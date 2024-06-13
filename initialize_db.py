@@ -78,5 +78,13 @@ for expense in expenses:
     print(f"Expense created: {expense.user_id}, {expense.category_id}, {expense.amount}, {expense.description}, {expense.date}, {expense.id}")
 
 
+# Fetch an expense and update it (watch how the movies amount gets updated)
+print("Updating expense...")
+updated_expense = Expense.find_by_id(expenses[1].id)
+if updated_expense:
+    updated_expense.amount = 120.0
+    updated_expense.save()
+    print(f"Expense updated: {updated_expense.user_id}, {updated_expense.category_id}, {updated_expense.amount}, {updated_expense.description}, {updated_expense.date}, {updated_expense.id}")
+
 
 
