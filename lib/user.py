@@ -7,7 +7,7 @@ class User:
         self._username = username
         self._email = email
         self._id = user_id
-#adding a property to the username
+#adding property to the username
     @property
     def username(self):
         return self._username
@@ -17,4 +17,13 @@ class User:
         if not isinstance(value, str):
             raise TypeError("Username must be a string.")
         self._username = value
-#
+#giving a property to the email
+    @property
+    def email(self):
+        return self._email
+#setting the email
+    @email.setter
+    def email(self, value):
+        if not isinstance(value, str):
+            raise TypeError("Email must be a string.")
+        self._email = value
