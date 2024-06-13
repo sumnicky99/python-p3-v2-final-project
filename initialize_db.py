@@ -35,4 +35,9 @@ if fetched_user:
     fetched_user.save()
     print(f"User updated: {fetched_user.username}, {fetched_user.email}, {fetched_user.id}")
 
+# Delete user
+print("Deleting user...")
+User.delete(user3.id)
+print(f"User with ID {user3.id} deleted")
+
 
