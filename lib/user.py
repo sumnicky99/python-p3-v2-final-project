@@ -64,5 +64,26 @@ class User:
         cursor.execute(sql)
         conn.commit()
         conn.close()
-
+    #creating a save method
+    def save(self):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        if self.id is None:
+            sql = '''
+                INSERT INTO users (username, email)
+                VALUES (?, ?)
+            '''
+            cursor.execute(sql, (self.username, self.email))
+            self.id = cursor.lastrowid
+        else:
+            sql = '''
+                UPDATE users
+                SET username = ?, email = ?
+                WHERE id = ?
+            '''
+            cursor.execute(sql, (self.username, self.email, self.id))
+        conn.commit()
+        conn.close()
+    #c
+   
        
