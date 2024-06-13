@@ -108,4 +108,12 @@ class Category:
         cursor.execute('DELETE FROM categories WHERE id = ?', (category_id,))
         conn.commit()
         conn.close()
-    
+    #created a class method for getting all categories
+    @classmethod
+    def get_all_categories(cls):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT id, name FROM categories')
+        rows = cursor.fetchall()
+        conn.close()
+        return [cls(row[1], row[0]) for row in rows]
