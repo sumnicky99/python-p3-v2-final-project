@@ -87,4 +87,10 @@ if updated_expense:
     print(f"Expense updated: {updated_expense.user_id}, {updated_expense.category_id}, {updated_expense.amount}, {updated_expense.description}, {updated_expense.date}, {updated_expense.id}")
 
 
+# Delete an expense (watch how the electricity bill gets deleted)
+print("Deleting expense...")
+deleted_expense = expenses[2]  # Assuming expenses[2] is the expense you want to delete
+Expense.delete(deleted_expense.id)
+print(f"Expense with ID {deleted_expense.id} deleted")
+
 
