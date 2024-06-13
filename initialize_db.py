@@ -26,4 +26,13 @@ print(f"User created: {user2.username}, {user2.email}, {user2.id}")
 user3 = User.create(username="Debra", email="Debra@example.com")
 print(f"User created: {user3.username}, {user3.email}, {user3.id}")
 
+# Update user
+print("Updating user...")
+fetched_user = User.find_user_by_id(user2.id)
+if fetched_user:
+    fetched_user.username = "George"
+    fetched_user.email = "George@gmail.com"
+    fetched_user.save()
+    print(f"User updated: {fetched_user.username}, {fetched_user.email}, {fetched_user.id}")
+
 
