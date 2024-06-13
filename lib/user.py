@@ -104,5 +104,15 @@ class User:
         if row:
             return cls(row[1], row[2], row[0])
         return None
-   
+    #class method for getting a specific user with specific email and username
+    @classmethod
+    def find_user_by_username_and_email(cls, username, email):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT id, username, email FROM users WHERE username = ? AND email = ?', (username, email))
+        row = cursor.fetchone()
+        conn.close()
+        if row:
+            return cls(row[1], row[2], row[0])
+        return None
        
