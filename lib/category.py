@@ -16,4 +16,8 @@ class Category:
         if not isinstance(value, str):
             raise TypeError("Name must be a string.")
         self._name = value
+#Giving a property to id
+    @property
+    def id(self):
+        return self._id
 
