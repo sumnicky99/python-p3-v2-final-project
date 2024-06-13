@@ -10,4 +10,8 @@ class Expense:
         self.amount = amount
         self.description = description
         self.date = date
-  
+  #adding properties
+#giving id a property
+@property
+def id(self):
+    return self._id
