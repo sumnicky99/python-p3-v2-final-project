@@ -27,3 +27,8 @@ def id(self, value):
 @property
 def amount(self):
     return self._amount
+
+#setting amount 
+@amount.setter
+def amount(self, value):
+    self._amount = value
