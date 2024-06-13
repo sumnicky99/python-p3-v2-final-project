@@ -15,3 +15,10 @@ class Expense:
 @property
 def id(self):
     return self._id
+
+#setting id 
+@id.setter
+def id(self, value):
+    if not isinstance(value, int) and value is not None:
+        raise TypeError("ID must be an integer or None.")
+    self._id = value
