@@ -73,4 +73,19 @@ class Category:
         conn.commit()
         conn.close()
 
- 
+    @classmethod
+    def create(cls, name):
+        category = cls(name)
+        category.save()
+        return category
+#created a class method for getting  categories by name
+    @classmethod
+    def find_category_by_id(cls, category_id):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT id, name FROM categories WHERE id = ?', (category_id,))
+        row = cursor.fetchone()
+        conn.close()
+        if row:
+            return cls(row[1], row[0])
+        return None
