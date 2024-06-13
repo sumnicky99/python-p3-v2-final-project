@@ -66,3 +66,17 @@ print("Deleting category...")
 Category.delete(categories[3].id)
 print(f"Category with ID {categories[3].id} deleted")
 
+# Create expenses
+expenses = [
+    Expense.create(user_id=user1.id, category_id=categories[0].id, amount=100.0, description="Dinner", date="2024-06-12"),
+    Expense.create(user_id=user2.id, category_id=categories[1].id, amount=30.0, description="Movie tickets", date="2024-06-10"),
+    Expense.create(user_id=user1.id, category_id=categories[2].id, amount=50.0, description="Electricity bill", date="2024-06-11"),
+    Expense.create(user_id=user2.id, category_id=categories[3].id, amount=20.0, description="Bus fare", date="2024-06-09")
+]
+
+for expense in expenses:
+    print(f"Expense created: {expense.user_id}, {expense.category_id}, {expense.amount}, {expense.description}, {expense.date}, {expense.id}")
+
+
+
+
