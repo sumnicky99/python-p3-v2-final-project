@@ -115,4 +115,12 @@ class User:
         if row:
             return cls(row[1], row[2], row[0])
         return None
-       
+        #class method for deleting a user
+    @classmethod
+    def delete(cls, user_id):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('DELETE FROM users WHERE id = ?', (user_id,))
+        conn.commit()
+        conn.close()
+        #class method for getting all users
