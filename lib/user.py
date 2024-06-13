@@ -1,7 +1,7 @@
 #importing get_db_connection from connection file
 from connection import get_db_connection
 
-#creating a class method for the user
+#creating a class  for the user
 class User:
     def __init__(self, username, email, user_id=None):
         self._username = username
