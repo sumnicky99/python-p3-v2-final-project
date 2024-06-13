@@ -42,3 +42,7 @@ def description(self):
 @description.setter
 def description(self, value):
     self._description = value
+#giving date a property 
+@property
+def date(self):
+    return self._date
