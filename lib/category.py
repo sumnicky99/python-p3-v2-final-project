@@ -100,4 +100,12 @@ class Category:
         if row:
             return cls(row[1], row[0])
         return None
-  
+     #created a class method for deleting a specific category
+    @classmethod
+    def delete(cls, category_id):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('DELETE FROM categories WHERE id = ?', (category_id,))
+        conn.commit()
+        conn.close()
+    
