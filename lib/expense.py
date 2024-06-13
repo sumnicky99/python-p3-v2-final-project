@@ -46,3 +46,8 @@ def description(self, value):
 @property
 def date(self):
     return self._date
+
+#setting date
+@date.setter
+def date(self, value):
+    self._date = value
