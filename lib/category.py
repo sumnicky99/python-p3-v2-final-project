@@ -52,3 +52,25 @@ class Category:
         cursor.execute(sql)
         conn.commit()
         conn.close()
+#created a  method for saving
+    def save(self):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        if self.id is None:
+            sql = '''
+                INSERT INTO categories (name)
+                VALUES (?)
+            '''
+            cursor.execute(sql, (self.name,))
+            self.id = cursor.lastrowid
+        else:
+            sql = '''
+                UPDATE categories
+                SET name = ?
+                WHERE id = ?
+            '''
+            cursor.execute(sql, (self.name, self.id))
+        conn.commit()
+        conn.close()
+
+ 
