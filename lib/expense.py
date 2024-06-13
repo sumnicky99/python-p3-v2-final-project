@@ -133,3 +133,10 @@ def update(self, user_id=None, category_id=None, amount=None, description=None, 
         (self.user_id, self.category_id, self.amount, self.description, self.date, self.id)
     )
     conn.commit()
+#creating a delete method
+@classmethod
+def delete(cls, expense_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('DELETE FROM expenses WHERE id = ?', (expense_id,))
+    conn.commit()
