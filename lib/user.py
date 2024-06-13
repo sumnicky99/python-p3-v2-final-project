@@ -37,3 +37,7 @@ class User:
         if not isinstance(value, int) and value is not None:
             raise TypeError("ID must be an integer or None.")
         self._id = value
+#using repr method
+    def __repr__(self):
+        return f"<User {self.username}, {self.email}, {self.id}>"
+   
