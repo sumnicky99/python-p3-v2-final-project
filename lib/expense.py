@@ -140,3 +140,12 @@ def delete(cls, expense_id):
     cursor = conn.cursor()
     cursor.execute('DELETE FROM expenses WHERE id = ?', (expense_id,))
     conn.commit()
+#getting all expenses
+@classmethod
+def get_all_expenses(cls):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT id, user_id, category_id, amount, description, date FROM expenses')
+    rows = cursor.fetchall()
+    conn.close()
+    return [cls(row[1], row[2], row[3], row[4], row[5], row[0]) for row in rows]
