@@ -89,3 +89,15 @@ class Category:
         if row:
             return cls(row[1], row[0])
         return None
+ #created a class method for getting  categories by name
+    @classmethod
+    def find_category_by_name(cls, name):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT id, name FROM categories WHERE name = ?', (name,))
+        row = cursor.fetchone()
+        conn.close()
+        if row:
+            return cls(row[1], row[0])
+        return None
+  
