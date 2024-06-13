@@ -22,3 +22,8 @@ def id(self, value):
     if not isinstance(value, int) and value is not None:
         raise TypeError("ID must be an integer or None.")
     self._id = value
+
+#giving amount a property
+@property
+def amount(self):
+    return self._amount
