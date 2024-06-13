@@ -29,4 +29,18 @@ class Category:
 #use of repr
     def __repr__(self):
         return f"<Category {self.name}, {self.id}>"
+#creating the Category table
+    @classmethod
+    def create_table(cls):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        sql = '''
+            CREATE TABLE IF NOT EXISTS categories (
+                id INTEGER PRIMARY KEY,
+                name TEXT NOT NULL
+            )
+        '''
+        cursor.execute(sql)
+        conn.commit()
+        conn.close()
 
