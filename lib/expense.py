@@ -101,3 +101,15 @@ def save(self):
         '''
         cursor.execute(sql, (self.user_id, self.category_id, self.amount, self.description, self.date, self.id))
     conn.commit()
+
+#finding expense by id
+@classmethod
+def find_by_id(cls, expense_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM expenses WHERE id = ?', (expense_id,))
+    row = cursor.fetchone()
+    conn.close()
+    if row:
+        return cls(row[1], row[2], row[3], row[4], row[5], row[0])
+    return None
