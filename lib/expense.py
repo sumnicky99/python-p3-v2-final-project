@@ -82,3 +82,22 @@ def drop_table(cls):
     sql = 'DROP TABLE IF EXISTS expenses'
     cursor.execute(sql)
     conn.commit()
+#saving
+def save(self):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    if self.id is None:
+        sql = '''
+            INSERT INTO expenses (user_id, category_id, amount, description, date)
+            VALUES (?, ?, ?, ?, ?)
+        '''
+        cursor.execute(sql, (self.user_id, self.category_id, self.amount, self.description, self.date))
+        self.id = cursor.lastrowid
+    else:
+        sql = '''
+            UPDATE expenses
+            SET user_id = ?, category_id = ?, amount = ?, description = ?, date = ?
+            WHERE id = ?
+        '''
+        cursor.execute(sql, (self.user_id, self.category_id, self.amount, self.description, self.date, self.id))
+    conn.commit()
