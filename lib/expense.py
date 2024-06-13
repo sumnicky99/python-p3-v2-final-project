@@ -37,3 +37,8 @@ def amount(self, value):
 @property
 def description(self):
     return self._description
+
+#setting description
+@description.setter
+def description(self, value):
+    self._description = value
