@@ -72,3 +72,13 @@ def create_table(cls):
     '''
     cursor.execute(sql)
     conn.commit()
+
+    #dropped the created table
+
+@classmethod
+def drop_table(cls):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    sql = 'DROP TABLE IF EXISTS expenses'
+    cursor.execute(sql)
+    conn.commit()
