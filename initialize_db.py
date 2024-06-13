@@ -94,3 +94,11 @@ Expense.delete(deleted_expense.id)
 print(f"Expense with ID {deleted_expense.id} deleted")
 
 
+# Fetch and update user1
+print("Fetching and updating user...")
+fetched_user = User.find_user_by_id(user1.id)
+if fetched_user:
+    print(f"User fetched: {fetched_user.username}, {fetched_user.email}, {fetched_user.id}")
+    fetched_user.email = "maya@example.com"
+    fetched_user.save()
+    print(f"User updated: {fetched_user.username}, {fetched_user.email}, {fetched_user.id}")
