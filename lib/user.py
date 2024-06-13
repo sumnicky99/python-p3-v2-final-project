@@ -85,5 +85,24 @@ class User:
         conn.commit()
         conn.close()
     #c
+    @classmethod
+    def create(cls, username, email):
+        existing_user = cls.find_user_by_username_and_email(username, email)
+        if existing_user:
+            return existing_user
+        user = cls(username, email)
+        user.save()
+        return user
+    #class method for getting a specific user with specific id
+    @classmethod
+    def find_user_by_id(cls, user_id):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT id, username, email FROM users WHERE id = ?', (user_id,))
+        row = cursor.fetchone()
+        conn.close()
+        if row:
+            return cls(row[1], row[2], row[0])
+        return None
    
        
