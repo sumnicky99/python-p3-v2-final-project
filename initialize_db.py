@@ -111,3 +111,11 @@ def fetch_all_users():
     rows = cursor.fetchall()
     conn.close()
     return rows
+
+def fetch_all_categories():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM categories')
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
