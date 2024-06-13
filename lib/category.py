@@ -10,4 +10,10 @@ class Category:
     @property
     def name(self):
         return self._name
+#setting the id
+    @name.setter
+    def name(self, value):
+        if not isinstance(value, str):
+            raise TypeError("Name must be a string.")
+        self._name = value
 
