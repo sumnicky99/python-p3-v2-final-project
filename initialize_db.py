@@ -60,3 +60,9 @@ if category_to_update:
     category_to_update.save()
     print(f"Category updated: {category_to_update.name}, {category_to_update.id}")
 
+
+# Delete a category (watch how it deletes clothing)
+print("Deleting category...")
+Category.delete(categories[3].id)
+print(f"Category with ID {categories[3].id} deleted")
+
