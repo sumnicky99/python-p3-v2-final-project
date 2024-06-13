@@ -40,7 +40,7 @@ class User:
 #using repr method
     def __repr__(self):
         return f"<User {self.username}, {self.email}, {self.id}>"
-    #created the user table
+    #creating the user table
     @classmethod
     def create_table(cls):
         conn = get_db_connection()
@@ -55,4 +55,14 @@ class User:
         cursor.execute(sql)
         conn.commit()
         conn.close()
-  
+    #dropping the table
+    @classmethod
+    def drop_table(cls):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        sql = 'DROP TABLE IF EXISTS users'
+        cursor.execute(sql)
+        conn.commit()
+        conn.close()
+
+       
