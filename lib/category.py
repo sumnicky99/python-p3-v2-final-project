@@ -26,4 +26,7 @@ class Category:
         if not isinstance(value, int) and value is not None:
             raise TypeError("ID must be an integer or None.")
         self._id = value
+#use of repr
+    def __repr__(self):
+        return f"<Category {self.name}, {self.id}>"
 
