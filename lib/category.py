@@ -6,4 +6,8 @@ class Category:
     def __init__(self, name, category_id=None):
         self._name = name
         self._id = category_id
+#Giving a property to name
+    @property
+    def name(self):
+        return self._name
 
