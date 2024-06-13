@@ -113,3 +113,23 @@ def find_by_id(cls, expense_id):
     if row:
         return cls(row[1], row[2], row[3], row[4], row[5], row[0])
     return None
+#updating the expense table
+def update(self, user_id=None, category_id=None, amount=None, description=None, date=None):
+    if user_id is not None:
+        self.user_id = user_id
+    if category_id is not None:
+        self.category_id = category_id
+    if amount is not None:
+        self.amount = amount
+    if description is not None:
+        self.description = description
+    if date is not None:
+        self.date = date
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        'UPDATE expenses SET user_id=?, category_id=?, amount=?, description=?, date=? WHERE id=?',
+        (self.user_id, self.category_id, self.amount, self.description, self.date, self.id)
+    )
+    conn.commit()
