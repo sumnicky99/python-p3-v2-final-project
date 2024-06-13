@@ -124,3 +124,11 @@ class User:
         conn.commit()
         conn.close()
         #class method for getting all users
+    @classmethod
+    def get_all_users(cls):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT id, username, email FROM users')
+        rows = cursor.fetchall()
+        conn.close()
+        return [cls(row[1], row[2], row[0]) for row in rows]
