@@ -40,4 +40,19 @@ class User:
 #using repr method
     def __repr__(self):
         return f"<User {self.username}, {self.email}, {self.id}>"
-   
+    #created the user table
+    @classmethod
+    def create_table(cls):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        sql = '''
+            CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY,
+                username TEXT NOT NULL,
+                email TEXT NOT NULL
+            )
+        '''
+        cursor.execute(sql)
+        conn.commit()
+        conn.close()
+  
