@@ -111,4 +111,11 @@ class Expense:
         return [cls(row[1], row[2], row[3], row[4], row[5], row[0]) for row in rows]
 
 
-
+    @classmethod
+    def get_all(cls):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT id, category_id, amount, description FROM expenses')
+        rows = cursor.fetchall()
+        conn.close()
+        return [cls(row[1], row[2], row[3], row[0]) for row in rows]

@@ -131,3 +131,27 @@ class User:
         rows = cursor.fetchall()
         conn.close()
         return [cls(row[1], row[2], row[0]) for row in rows]
+    
+    @classmethod
+    def find_user_by_username(cls, username):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT id, username, email FROM users WHERE username=?", (username,))
+        user_data = cursor.fetchone()
+        conn.close()
+        if user_data:
+            return cls(user_data[1], user_data[2], user_data[0])
+        return None
+
+
+
+
+
+    @classmethod
+    def get_all(cls):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT id, username, email FROM users')
+        rows = cursor.fetchall()
+        conn.close()
+        return [cls(row[1], row[2], row[0]) for row in rows]

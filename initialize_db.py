@@ -127,3 +127,8 @@ def fetch_all_expenses():
     rows = cursor.fetchall()
     conn.close()
     return rows
+
+print("Verifying data in tables...")
+print("Users:", fetch_all_users())
+print("Categories:", fetch_all_categories())
+print("Expenses:", fetch_all_expenses())

@@ -41,6 +41,7 @@ class Category:
         cursor.execute(sql)
         conn.commit()
         conn.close()
+
 #dropped the created table
     @classmethod
     def drop_table(cls):
@@ -76,6 +77,7 @@ class Category:
         category = cls(name)
         category.save()
         return category
+    
 #created a class method for getting  categories by name
     @classmethod
     def find_category_by_id(cls, category_id):
@@ -109,6 +111,16 @@ class Category:
     #created a class method for getting all categories
     @classmethod
     def get_all_categories(cls):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT id, name FROM categories')
+        rows = cursor.fetchall()
+        conn.close()
+        return [cls(row[1], row[0]) for row in rows]
+
+
+    @classmethod
+    def get_all(cls):
         conn = get_db_connection()
         cursor = conn.cursor()
         cursor.execute('SELECT id, name FROM categories')

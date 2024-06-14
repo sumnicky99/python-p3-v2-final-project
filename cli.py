@@ -5,7 +5,10 @@ from lib.expense import Expense
 
 
 def MainMenu () :
+
+    """Main menu loop to navigate between user, category, and expense menus."""
     while True :
+         # Display main menu options
         menu = (
             "\nMain Menu:\n"
             "1. User Menu\n"
@@ -116,23 +119,25 @@ def category_menu () :
 def create_category():
     name = input("Enter category name: ")
     description = input("Enter category description: ")
-    category = Category.create(name, description)  # Assuming Category has a class method 'create'
+    category = Category.create(name, description)  
     input(f"Category '{category.name}' created with ID: {category.id}. Press Enter to continue.")
 
 def list_categories():
-    categories = Category.get_all()  # Assuming Category has a method 'get_all' to fetch all categories
+    categories = Category.get_all()
     if categories:
         print("\nList of Categories:")
         for category in categories:
-            print(f"{category.id}: {category.name} - {category.description}")
+            description = getattr(category, 'description', 'No description')
+            print(f"{category.id}: {category.name} - {description}")
     else:
         print("No categories found.")
     input("Press Enter to continue.")
 
 
+
 def find_category_by_name():
     name = input("Enter category name to search: ")
-    category = Category.find_by_name(name)  # Assuming Category has a method 'find_by_name'
+    category = Category.find_by_name(name) 
     if category:
         print(f"Category found: {category.id}: {category.name} - {category.description}")
     else:
