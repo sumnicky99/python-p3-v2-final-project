@@ -146,11 +146,11 @@ def delete_category():
     category_id = input("Enter category ID to delete: ")
     if category_id.isdigit():
         category_id = int(category_id)
-        category = Category.find_category_by_id(category_id)  # Use the correct method name
+        category = Category.find_category_by_id(category_id)  
         if category:
             confirmation = input(f"Are you sure you want to delete category '{category.name}'? (yes/no): ")
             if confirmation.lower() == "yes":
-                Category.delete(category_id)  # Assuming Category has a method 'delete'
+                Category.delete(category_id)  
                 input(f"Category '{category.name}' deleted successfully. Press Enter to continue.")
             else:
                 input("Deletion canceled. Press Enter to continue.")
@@ -189,51 +189,65 @@ def expense_menu():
 
 
 def add_expense():
-    category_id = input("Enter category ID for the expense: ")
-    amount = float(input("Enter amount for the expense: "))
-    description = input("Enter description for the expense: ")
-    expense = Expense.create(category_id, amount, description)  
-    input(f"Expense added with ID: {expense.id}. Press Enter to continue.")
-
+    try:
+        category_id = int(input("Enter category ID for the expense: "))
+        amount = float(input("Enter amount for the expense: "))
+        description = input("Enter description for the expense: ")
+        date = input("Enter date for the expense (YYYY-MM-DD): ")
+        
+        expense = Expense.create(category_id, amount, description, date)  # Make sure to pass the date
+        print(f"Expense added successfully with ID: {expense.id}")
+    except ValueError as ve:
+        print(f"Invalid input: {ve}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    input("Press Enter to continue.")
 
 def list_expenses():
-    expenses = Expense.get_all()  
-    if expenses:
-        print("\nList of Expenses:")
-        for expense in expenses:
-            print(f"{expense.id}: Category ID: {expense.category_id}, Amount: {expense.amount}, Description: {expense.description}")
-    else:
-        print("No expenses found.")
+    try:
+        expenses = Expense.all()  # Fetch all expenses
+        if not expenses:
+            print("No expenses found.")
+        else:
+            print("List of Expenses:")
+            for expense in expenses:
+                print(expense)  # Assuming __str__ method is implemented in Expense class
+    except Exception as e:
+        print(f"An error occurred: {e}")
     input("Press Enter to continue.")
-
 
 def find_expense_by_id():
-    expense_id = input("Enter expense ID to search: ")
-    expense = Expense.find_by_id(expense_id)  
-    if expense:
-        print(f"Expense found: ID: {expense.id}, Category ID: {expense.category_id}, Amount: {expense.amount}, Description: {expense.description}")
-    else:
-        print("Expense not found.")
+    try:
+        expense_id = int(input("Enter expense ID to search: "))
+        expense = Expense.find_by_id(expense_id)  # Assuming find_by_id method exists
+        if expense:
+            print(expense)
+        else:
+            print("Expense not found.")
+    except ValueError as ve:
+        print(f"Invalid input: {ve}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
     input("Press Enter to continue.")
 
-
 def delete_expense():
-    expense_id = input("Enter expense ID to delete: ")
-    if expense_id.isdigit():
-        expense_id = int(expense_id)
-        expense = Expense.find_by_id(expense_id)  
+    try:
+        expense_id = int(input("Enter expense ID to delete: "))
+        expense = Expense.find_by_id(expense_id)  # Assuming find_by_id method exists
         if expense:
-            confirmation = input(f"Are you sure you want to delete this expense? (yes/no): ")
-            if confirmation.lower() == "yes":
-                Expense.delete(expense_id)  
-                input(f"Expense with ID {expense_id} deleted successfully. Press Enter to continue.")
+            confirm = input(f"Are you sure you want to delete expense '{expense.description}'? (yes/no): ")
+            if confirm.lower() == 'yes':
+                Expense.delete(expense_id)  # Assuming delete method exists
+                print(f"Expense '{expense.description}' deleted successfully.")
             else:
-                input("Deletion canceled. Press Enter to continue.")
+                print("Deletion cancelled.")
         else:
-            input(f"Expense with ID {expense_id} not found. Press Enter to continue.")
-    else:
-        input("Invalid input. Expense ID must be an integer. Press Enter to continue.")
-
+            print("Expense not found.")
+    except ValueError as ve:
+        print(f"Invalid input: {ve}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    input("Press Enter to continue.")
 
 if __name__ =="__main__" :
     MainMenu ()
