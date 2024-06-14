@@ -115,41 +115,38 @@ def category_menu () :
             break
         else:
             input("Invalid choice. Please select a valid option. Press Enter to continue.")
-
 def create_category():
     name = input("Enter category name: ")
-    description = input("Enter category description: ")
-    category = Category.create(name, description)  
+    #description = input("Enter category description: ")
+    category = Category.create(name)  # Change the method signature to pass only one argument
     input(f"Category '{category.name}' created with ID: {category.id}. Press Enter to continue.")
 
 def list_categories():
-    categories = Category.get_all()
+    categories = Category.get_all_categories()  # Use the correct method name
     if categories:
         print("\nList of Categories:")
         for category in categories:
-            description = getattr(category, 'description', 'No description')
+            description = getattr(category, 'description', 'No description')  # Assuming description is a property of the Category class
             print(f"{category.id}: {category.name} - {description}")
     else:
         print("No categories found.")
     input("Press Enter to continue.")
 
 
-
 def find_category_by_name():
     name = input("Enter category name to search: ")
-    category = Category.find_by_name(name) 
+    category = Category.find_category_by_name(name)  # Use the correct method name
     if category:
         print(f"Category found: {category.id}: {category.name} - {category.description}")
     else:
         print("Category not found.")
     input("Press Enter to continue.")
 
-
 def delete_category():
     category_id = input("Enter category ID to delete: ")
     if category_id.isdigit():
         category_id = int(category_id)
-        category = Category.find_by_id(category_id)  # Assuming Category has a method 'find_by_id'
+        category = Category.find_category_by_id(category_id)  # Use the correct method name
         if category:
             confirmation = input(f"Are you sure you want to delete category '{category.name}'? (yes/no): ")
             if confirmation.lower() == "yes":
@@ -195,12 +192,12 @@ def add_expense():
     category_id = input("Enter category ID for the expense: ")
     amount = float(input("Enter amount for the expense: "))
     description = input("Enter description for the expense: ")
-    expense = Expense.create(category_id, amount, description)  # Assuming Expense has a method 'create'
+    expense = Expense.create(category_id, amount, description)  
     input(f"Expense added with ID: {expense.id}. Press Enter to continue.")
 
 
 def list_expenses():
-    expenses = Expense.get_all()  # Assuming Expense has a method 'get_all' to fetch all expenses
+    expenses = Expense.get_all()  
     if expenses:
         print("\nList of Expenses:")
         for expense in expenses:

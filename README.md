@@ -1,119 +1,63 @@
-# Phase 3 Project: CLI and ORM
+# Phase-1-independent-project
+The Expense Tracker is a command-line application that helps users manage their expenses by creating categories, adding expenses, and keeping track of them.
 
-## Learning Goals
+#### Date, 2024/04/09
 
-- Implement a Python application that includes a **Command Line Interface**.
-- Implement a set of **Object-Relational Mapping** functions for two or more
-  model classes.
-- Define a Python object model that includes a one-to-many relationship between
-  two classes.
-- Exercise best practices in CLI design.
-- Exercise best practices in OOP.
+#### By *Sumeya Mohamed*
 
----
+## Description
+The Expense Tracker is a command-line application that helps users manage their expenses by creating categories, adding expenses, and keeping track of them. The application is built using Python and SQLite for data storage.
 
-## Key Vocab
+## Installation
+You use git clone to be able to download the documents in the GitHub
 
-- **Command Line**: a text-based interface that is built into your computer's
-  operating system. It allows you to access the files and applications on your
-  computer manually or through scripts.
-- **Terminal**: the application in Mac OS that allows you to access the command
-  line.
-- **Command Shell/Powershell**: the applications in Windows that allow you to
-  access the command line.
-- **Command-Line Interface (CLI)**: a text-based interface used to run programs,
-  manage files and interact with objects in memory. As the name suggests, it is
-  run from the command line.
-- **Object-Relational Mapping (ORM)**: a programming technique that provides a
-  mapping between an object-oriented data model and a relational database model.
-- **Attribute**: variables that belong to an object.
-- **Property**: attributes that are controlled by methods.
-- **Decorator**: function that takes another function as an argument and returns
-  a new function with added functionality.
+## Installation Requirements
 
----
+    1.A computer with a bash terminal and node installed.
+    2.Access to the internet.
 
-## Introduction
 
-Welcome to the end of Phase 3! You've learned about a lot in this unit:
+### Installation instruction
+```
+1. git clone this repository using
 
-- Python fundamentals.
-- Data structures (and more recently, algorithms).
-- Object-oriented programming.
-- Object inheritance.
-- Instance and class attributes and methods.
-- Configuring applications.
-- SQL fundamentals.
-- Table relations in SQL.
-- Object-relational mapping with Python.
-- Building CLIs.
+git@github.com:sumnicky99/python-p3-v2-final-project.git
 
-You're going to use these skills to create a CLI and ORM application. The Phase
-3 project is open-ended when it comes to the actual content. You are free to
-create whatever you'd like, as long as it incorporates the requirements listed
-below.
 
-## Requirements
 
-You need to implement a Python CLI Application that meets the following
-requirements.
+2.The repository, if downloaded as a .zip file will need to be extracted to your preferred location.
 
-### ORM Requirements
+3.Navigate to the project folder on your bash terminal.
+     cd to python-p3-v2-final-project
 
-- The application must include a database created and modified with Python ORM
-  methods that you write.
+4.Install the  dependancies
 
-  - The data model must include **at least 2** model classes.
-  - The data model must include **at least 1** one-to-many relationships.
-  - Property methods should be defined to add appropriate constraints to each
-    model class.
-  - Each model class should include ORM methods (create, delete, get all, and
-    find by id at minimum).
 
-### CLI Requirements
+5.Run the application 
 
-- The CLI must display menus with which a user may interact.
-- The CLI should use loops as needed to keep the user in the application until
-  they choose to exit.
-- For **EACH** class in the data model, the CLI must include options: to create
-  an object, delete an object, display all objects, view related objects, and
-  find an object by attribute.
-- The CLI should validate user input and object creations/deletions, providing
-  informative errors to the user.
 
-# Project Environment, Configuration, Documentation
+```
+# Live Link
 
-- The project code should follow OOP best practices.
-- Pipfile contains all needed dependencies and no unneeded dependencies.
-- Imports are used in files only where necessary.
-- Project folders, files, and modules should be organized and follow appropriate
-  naming conventions.
-- The project should include a `README.md` that describes the application.
+https://github.com/sumnicky99/python-p3-v2-final-project.git
+  
+## Technologies used
+Python
+SQLite
+Pyenv
+Github
 
-You do **not** need to implement tests for `pytest`, although you should test
-your code thoroughly using your CLI. Try entering bad data when prompted for
-input, and confirm your application prints a useful error message.
+## Support and contact details
+github.com/sumnicky99
+email: sumnicky99@gmail.com
 
-## How to begin?
+### License
+The content of this site is licensed under the MIT license
 
-- Start with the project template (provided in the following lesson). You are
-  free to adapt the template structure, as long as you adhere to the project
-  requirements.
-- Think about the user interaction. How will you prompt the user? What
-  information will the user enter? How will you provide feedback to the user?
-- Think about your data model. How will you organize and store the information
-  received from the user?
-- If you get stuck trying to accomplish a specific task, check online to see if
-  there's a Python library that will make it easier.
-- Consider using [Click][click] or [Fire][fire] to take care of basic CLI tasks
-  for you.
+Copyright (c) 2024
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
----
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-## Resources
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-- [Click documentation][click]
-- [The Python Fire Guide][fire]
-
-[click]: https://click.palletsprojects.com/en/8.1.x/
-[fire]: https://google.github.io/python-fire/guide/
