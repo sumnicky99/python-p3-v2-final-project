@@ -74,7 +74,7 @@ def find_user_by_username():
     
 def delete_user():
     user_id = input("Enter user ID to delete: ")
-    if user_id.isdigit():  # Check if input is a valid integer
+    if user_id.isdigit():  
         user_id = int(user_id)
         user = User.find_user_by_id(user_id)
         if user:
