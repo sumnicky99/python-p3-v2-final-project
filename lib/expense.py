@@ -112,10 +112,13 @@ class Expense:
 
 
     @classmethod
-    def get_all(cls):
+    def all(cls):
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute('SELECT id, category_id, amount, description FROM expenses')
+        cursor.execute('SELECT id, user_id, category_id, amount, description, date FROM expenses')
         rows = cursor.fetchall()
         conn.close()
-        return [cls(row[1], row[2], row[3], row[0]) for row in rows]
+        return [cls(row[1], row[2], row[3], row[4], row[5], row[0]) for row in rows]
+
+    def __str__(self):
+        return f"ID: {self.id}, User ID: {self.user_id}, Category ID: {self.category_id}, Amount: {self.amount}, Description: {self.description}, Date: {self.date}"

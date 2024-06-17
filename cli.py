@@ -118,7 +118,7 @@ def category_menu () :
 def create_category():
     name = input("Enter category name: ")
     #description = input("Enter category description: ")
-    category = Category.create(name)  # Change the method signature to pass only one argument
+    category = Category.create(name)  
     input(f"Category '{category.name}' created with ID: {category.id}. Press Enter to continue.")
 
 def list_categories():
@@ -135,7 +135,7 @@ def list_categories():
 
 def find_category_by_name():
     name = input("Enter category name to search: ")
-    category = Category.find_category_by_name(name)  # Use the correct method name
+    category = Category.find_category_by_name(name)  
     if category:
         print(f"Category found: {category.id}: {category.name} - {category.description}")
     else:
@@ -187,15 +187,23 @@ def expense_menu():
             input("Invalid choice. Please select a valid option. Press Enter to continue.")
 
 
-
 def add_expense():
     try:
+        user_id = int(input("Enter user ID for the expense: "))  
         category_id = int(input("Enter category ID for the expense: "))
         amount = float(input("Enter amount for the expense: "))
         description = input("Enter description for the expense: ")
-        date = input("Enter date for the expense (YYYY-MM-DD): ")
+        date = input("Enter date for the expense (YYYY-MM-DD): ").strip()
+
         
-        expense = Expense.create(category_id, amount, description, date)  # Make sure to pass the date
+        # Debug statements to print the collected input
+        print(f"user_id: {user_id}")
+        print(f"category_id: {category_id}")
+        print(f"amount: {amount}")
+        print(f"description: {description}")
+        print(f"date: {date}")
+
+        expense = Expense.create(user_id, category_id, amount, description, date) 
         print(f"Expense added successfully with ID: {expense.id}")
     except ValueError as ve:
         print(f"Invalid input: {ve}")
@@ -211,7 +219,7 @@ def list_expenses():
         else:
             print("List of Expenses:")
             for expense in expenses:
-                print(expense)  # Assuming __str__ method is implemented in Expense class
+                print(expense) 
     except Exception as e:
         print(f"An error occurred: {e}")
     input("Press Enter to continue.")
@@ -219,7 +227,7 @@ def list_expenses():
 def find_expense_by_id():
     try:
         expense_id = int(input("Enter expense ID to search: "))
-        expense = Expense.find_by_id(expense_id)  # Assuming find_by_id method exists
+        expense = Expense.find_by_id(expense_id)  
         if expense:
             print(expense)
         else:
@@ -233,11 +241,11 @@ def find_expense_by_id():
 def delete_expense():
     try:
         expense_id = int(input("Enter expense ID to delete: "))
-        expense = Expense.find_by_id(expense_id)  # Assuming find_by_id method exists
+        expense = Expense.find_by_id(expense_id)  
         if expense:
             confirm = input(f"Are you sure you want to delete expense '{expense.description}'? (yes/no): ")
             if confirm.lower() == 'yes':
-                Expense.delete(expense_id)  # Assuming delete method exists
+                Expense.delete(expense_id)  
                 print(f"Expense '{expense.description}' deleted successfully.")
             else:
                 print("Deletion cancelled.")
