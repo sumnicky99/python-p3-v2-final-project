@@ -193,15 +193,15 @@ def add_expense():
         category_id = int(input("Enter category ID for the expense: "))
         amount = float(input("Enter amount for the expense: "))
         description = input("Enter description for the expense: ")
-        date = input("Enter date for the expense (YYYY-MM-DD): ").strip()
+        date = input("Enter date for the expense (YYYY-MM-DD): ").strip() #finish with the word "date"
 
         
         # Debug statements to print the collected input
-        print(f"user_id: {user_id}")
-        print(f"category_id: {category_id}")
-        print(f"amount: {amount}")
-        print(f"description: {description}")
-        print(f"date: {date}")
+        #print(f"user_id: {user_id}")
+        #print(f"category_id: {category_id}")
+        #print(f"amount: {amount}")
+        #print(f"description: {description}")
+        #print(f"date: {date}")
 
         expense = Expense.create(user_id, category_id, amount, description, date) 
         print(f"Expense added successfully with ID: {expense.id}")

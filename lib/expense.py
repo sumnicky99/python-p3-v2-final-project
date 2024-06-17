@@ -59,7 +59,7 @@ class Expense:
 
     @classmethod
     def create(cls, user_id, category_id, amount, description, date):
-        expense = cls(user_id, category_id, amount, description, date)
+        expense = cls(user_id, category_id, amount, description, date) #finish with the word "date"
         expense.save()
         return expense
 #finding by id
@@ -83,7 +83,7 @@ class Expense:
             self.amount = amount
         if description is not None:
             self.description = description
-        if date is not None:
+        if date is not None: 
             self.date = date
 
         conn = get_db_connection()
@@ -119,6 +119,6 @@ class Expense:
         rows = cursor.fetchall()
         conn.close()
         return [cls(row[1], row[2], row[3], row[4], row[5], row[0]) for row in rows]
-
+#The __str__ method provides a human-readable string representation of an object according to my understanding
     def __str__(self):
         return f"ID: {self.id}, User ID: {self.user_id}, Category ID: {self.category_id}, Amount: {self.amount}, Description: {self.description}, Date: {self.date}"
