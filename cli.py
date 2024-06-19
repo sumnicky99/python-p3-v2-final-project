@@ -56,32 +56,58 @@ def user_menu () :
             input("Invalid choice. Please select a valid option. Press Enter to continue.")
 
 
+def user_menu () :
+    while True:
+        menu = (
+            "\nUser Menu:\n"
+            "1. Create User\n"
+            "2. Find User by Username \n"
+            "3. Delete an Existing User Account\n"
+            "4. Back to Main Menu\n"
+            "Select an option: "
+        )
+        choice = input(menu)
+
+        if choice == "1":
+            create_user()
+        elif choice == "2":
+            find_user_by_username()
+        elif choice == "3":
+            delete_user()
+        elif choice == "4":
+            break
+        else:
+ 
+            input("Invalid choice. Please select a valid option. Press Enter to continue.")
+
+#MAKE SURE YOU CREATE A USER BEFORE DOING ANY OTHER OPERATION ON THE USER MENU SINCE CREATING WILL LEADING TO THE OTHER SEVERAL EVENTS .
+           # ie YOU CANNOT FIND A USER BY THEIR NAME IF THE USER DOES NOT EXIST!
+
+#creating the user and also giving an example of what the user should input
 def create_user():
-    username = input("Enter username: ")
-    email = input("Enter email: ")
+    username = input("Enter username (e.g., john_doe): ")
+    email = input("Enter email (e.g., john@example.com): ")
     user = User.create(username, email)
     input(f"User created with ID: {user.id}. Press Enter to continue.")
-
-
+#finding the user by thier username and also giving an example of what the user should input
 def find_user_by_username():
-    username = input("Enter username to search: ")
+    username = input("Enter username to search (e.g., john_doe): ")
     user = User.find_user_by_username(username)
     if user:
         input(f"User found: {user}. Press Enter to continue.")
     else:
         input("User not found. Press Enter to continue.")
-
-    
+#deleting the user and also giving an example of what the user should delete
 def delete_user():
-    user_id = input("Enter user ID to delete: ")
-    if user_id.isdigit():  
+    user_id = input("Enter user ID to delete (e.g., 1): ")
+    if user_id.isdigit():
         user_id = int(user_id)
         user = User.find_user_by_id(user_id)
         if user:
-            confirmation = input(f"Are you sure you want to delete user {user.username}? (yes/no): ")
+            confirmation = input(f"Are you sure you want to delete user '{user.username}'? (yes/no): ")
             if confirmation.lower() == "yes":
                 User.delete(user_id)
-                input(f"User {user.username} deleted successfully. Press Enter to continue.")
+                input(f"User '{user.username}' deleted successfully. Press Enter to continue.")
             else:
                 input("Deletion canceled. Press Enter to continue.")
         else:
@@ -115,18 +141,22 @@ def category_menu () :
             break
         else:
             input("Invalid choice. Please select a valid option. Press Enter to continue.")
+#MAKE SURE YOU CREATE CATEGORY BEFORE DOING ANY OTHER OPERATION ON THE CATEGORY MENU SINCE CREATING WILL LEADING TO THE OTHER SEVERAL EVENTS .
+           # ie YOU CANNOT FIND A CATEGORY BY THEIR NAME IF THE CATEGORY DOES NOT EXIST!
+
+#creating the category and also giving an example of what the user should input
 def create_category():
-    name = input("Enter category name: ")
-    #description = input("Enter category description: ")
-    category = Category.create(name)  
+    name = input("Enter category name (e.g., Groceries): ")
+    category = Category.create(name)
     input(f"Category '{category.name}' created with ID: {category.id}. Press Enter to continue.")
 
+
 def list_categories():
-    categories = Category.get_all_categories()  # Use the correct method name
+    categories = Category.get_all_categories()  
     if categories:
         print("\nList of Categories:")
         for category in categories:
-            description = getattr(category, 'description', 'No description')  # Assuming description is a property of the Category class
+            description = getattr(category, 'description', 'No description')  
             print(f"{category.id}: {category.name} - {description}")
     else:
         print("No categories found.")
@@ -134,14 +164,15 @@ def list_categories():
 
 
 def find_category_by_name():
-    name = input("Enter category name to search: ")
-    category = Category.find_category_by_name(name)  
+    name = input("Enter category name to search (e.g., Groceries): ")
+    category = Category.find_category_by_name(name)
     if category:
-        print(f"Category found: {category.id}: {category.name} - {category.description}")
+        print(f"Category found: {category.id}: {category.name} ")
     else:
         print("Category not found.")
     input("Press Enter to continue.")
 
+    
 def delete_category():
     category_id = input("Enter category ID to delete: ")
     if category_id.isdigit():
