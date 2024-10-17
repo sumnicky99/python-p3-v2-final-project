@@ -1,4 +1,4 @@
-# Phase-1-independent-project
+# Phase-3-independent-project
 The Expense Tracker is a command-line application that helps users manage their expenses by creating categories, adding expenses, and keeping track of them.
 
 #### Date, 2024/04/09
